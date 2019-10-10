@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import './home.dart';
+
 
 class MyLoginPage extends StatefulWidget {
   @override
@@ -36,18 +38,9 @@ class _MyLoginPageState extends State<MyLoginPage> {
         ),
       ));
 
-  final loginButton = RaisedButton(
-    color: Colors.tealAccent[200],
-    child: Text("  Login  "),
-    highlightColor: Colors.tealAccent[400],
-    shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(30.0),
-    ),
-    onPressed: () {},
-  );
-
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
@@ -81,16 +74,35 @@ class _MyLoginPageState extends State<MyLoginPage> {
                     child: new Column(
                       children: <Widget>[
                         Container(
-                          child: loginButton,
+                          child: 
+                          Builder(
+                          builder: (BuildContext context){
+                          return RaisedButton(
+                            color: Colors.teal[200],
+                            child: Text("Login"),
+                            highlightColor: Colors.tealAccent[400],
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  FadeRoute(
+                                      //builder: (context) => MyHome()));
+                               page: MyHome())
+                              );
+                            }
+                          );
+                            }
+                          ),
                           //alignment: Alignment.center,
                           padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                         ),
                         Container(
                           child: Text(
-                            'Don\'t have an account? Register Now',
+                            'Don\'t have an account? Register Meow',
                             style: TextStyle(
-                              
-                              decoration: TextDecoration.underline,
+                                decoration: TextDecoration.underline,
                                 fontSize: 14,
                                 fontStyle: FontStyle.italic,
                                 color: Colors.redAccent),
@@ -101,14 +113,32 @@ class _MyLoginPageState extends State<MyLoginPage> {
                       ],
                     ),
                   )
-
-                  //
-                  //padding: EdgeInsets.fromLTRB(45, 15, 0, 0),
-                  //child: loginButton,
                 ],
               ),
             ),
           )),
     );
   }
+}
+class FadeRoute extends PageRouteBuilder {
+  final Widget page;
+  FadeRoute({this.page})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+        );
 }
