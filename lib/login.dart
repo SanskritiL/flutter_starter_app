@@ -35,18 +35,16 @@ class _MyLoginPageState extends State<MyLoginPage> {
           borderSide: new BorderSide(),
         ),
       ));
-  
+
   final loginButton = RaisedButton(
-    color: Colors.red,
-    child: Text("Login"),
+    color: Colors.tealAccent[200],
+    child: Text("  Login  "),
     highlightColor: Colors.tealAccent[400],
     shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(30.0),
     ),
-    onPressed: (){},
- );
-
-
+    onPressed: () {},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -78,11 +76,35 @@ class _MyLoginPageState extends State<MyLoginPage> {
                     padding: EdgeInsets.fromLTRB(17, 0, 17, 0),
                     child: passwordField,
                   ),
+
                   Container(
-                    padding: EdgeInsets.fromLTRB(20, 15, 20, 0),
-                    child: loginButton,
-                    
-                    )
+                    child: new Column(
+                      children: <Widget>[
+                        Container(
+                          child: loginButton,
+                          //alignment: Alignment.center,
+                          padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                        ),
+                        Container(
+                          child: Text(
+                            'Don\'t have an account? Register Now',
+                            style: TextStyle(
+                              
+                              decoration: TextDecoration.underline,
+                                fontSize: 14,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.redAccent),
+                          ),
+                          padding: EdgeInsets.fromLTRB(24, 15, 0, 0),
+                          alignment: Alignment.center,
+                        ),
+                      ],
+                    ),
+                  )
+
+                  //
+                  //padding: EdgeInsets.fromLTRB(45, 15, 0, 0),
+                  //child: loginButton,
                 ],
               ),
             ),
