@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flare_flutter: ^1.5.15
-  
+  flutter_swiper : ^1.1.6
  
 
   # The following adds the Cupertino Icons font to your application.
