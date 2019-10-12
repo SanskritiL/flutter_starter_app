@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:playing_with_flutter/styleguide/colors.dart';
 import '../styleguide/text_style.dart';
 import '../commonWidgets/tab_text.dart';
+import '../model/Type.dart';
+import '../commonWidgets/types_card.dart';
 
 class HorizontalTabLayout extends StatefulWidget {
   @override
@@ -18,11 +20,12 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> {
       child: Stack(
         children: <Widget>[
           Positioned(
-            left: -20,
+            left: -10,
             bottom: 0,
             top: 0,
+            
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 48.0),
+              padding: const EdgeInsets.symmetric(vertical: 80.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -45,6 +48,18 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> {
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 65),
+              child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                TypeCard(type: moodBalance ),
+                TypeCard(type: workOut ),
+                TypeCard(type: gutFeeding ),
+
+              ],
+            ),
+          )
         ],
       ),
     );
